@@ -2,7 +2,7 @@ Source: openmvg
 Section: science
 Priority: extra
 Maintainer: Romain Janvier <romain.janvier@hotmail.fr>
-Build-Depends: debhelper (>= 9.0.0), cmake
+Build-Depends: debhelper (>= 9.0.0), cmake, coinor-libclp-dev
 Standards-Version: 3.9.5
 Homepage: http://imagine.enpc.fr/~moulonp/openMVG/
 Vcs-Git: git://github.com/archeos/openMVG.git
