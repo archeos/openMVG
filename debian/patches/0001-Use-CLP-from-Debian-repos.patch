@@ -1,0 +1,31 @@
+From: Romain Janvier <romain.janvier@hotmail.fr>
+Date: Sun, 2 Nov 2014 23:16:28 +0100
+Subject: Use CLP from Debian repos
+
+---
+ src/CMakeLists.txt | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index de37989..f691a3f 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -110,12 +110,13 @@ ENDIF(MOSEK_FOUND)
+ 
+ #- osi_clp (linear programming interface)
+ # ==============================================================================
+-ADD_SUBDIRECTORY(dependencies/osi_clp)
++#ADD_SUBDIRECTORY(dependencies/osi_clp)
+ INCLUDE_DIRECTORIES(
+-  ./dependencies/osi_clp/CoinUtils/src/
+-  ./dependencies/osi_clp/Clp/src/
+-  ./dependencies/osi_clp/Osi/src/Osi/
+-  ./dependencies/osi_clp/Clp/src/OsiClp/
++    /usr/include/coin
++    #  ./dependencies/osi_clp/CoinUtils/src/
++    #  ./dependencies/osi_clp/Clp/src/
++    #  ./dependencies/osi_clp/Osi/src/Osi/
++    #  ./dependencies/osi_clp/Clp/src/OsiClp/
+ )
+ 
+ #===============================
