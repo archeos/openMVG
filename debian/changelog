@@ -1,0 +1,6 @@
+openmvg (0.7-0archeos1) archeos-next; urgency=low
+
+	* Initial release (Closes: #83 ArcheOS)
+
+ -- Romain Janvier <romain.janvier@hotmail.fr>  Sat, 25 Oct 2014 21:02:55 +0200
+
