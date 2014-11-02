@@ -7,6 +7,7 @@ Standards-Version: 3.9.5
 Homepage: http://imagine.enpc.fr/~moulonp/openMVG/
 Vcs-Git: git://github.com/archeos/openMVG.git
 Vcs-Browser: https://github.com/archeos/openMVG
+
 Package: openmvg
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
