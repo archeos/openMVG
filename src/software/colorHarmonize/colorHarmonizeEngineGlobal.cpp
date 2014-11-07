@@ -323,10 +323,13 @@ bool ColorHarmonizationEngineGlobal::Process()
   std::cout << "\n -- \n SOLVE for color consistency with linear programming\n --" << std::endl;
   //-- Solve for the gains and offsets:
   std::vector<size_t> vec_indexToFix;
+  // here you will only have the ref image index in this vector => is it normal ?
   vec_indexToFix.push_back(map_cameraNodeToCameraIndex[_imgRef]);
 
   using namespace openMVG::linearProgramming;
 
+  // here vec_solution_x will be the size of the original number of files (*2 +1)
+  // but not the size of the number of file in the cleaned graph (after removing edges with poor support) as it should be...
   std::vector<double> vec_solution_r(_vec_fileNames.size() * 2 + 1);
   std::vector<double> vec_solution_g(_vec_fileNames.size() * 2 + 1);
   std::vector<double> vec_solution_b(_vec_fileNames.size() * 2 + 1);
@@ -342,6 +345,9 @@ bool ColorHarmonizationEngineGlobal::Process()
   {
     SOLVER_LP_T lpSolver(vec_solution_r.size());
 
+    //... so here it will crash with this message
+    // openMVG/linearProgramming/linearProgrammingOSI_X.hpp:207: bool openMVG::linearProgramming::OSI_X_SolverWrapper<SOLVERINTERFACE>::setup(const openMVG::linearProgramming::LP_Constraints_Sparse&) [with SOLVERINTERFACE = OsiClpSolverInterface]: Assertion `_nbParams == cstraints._nbParams' failed.
+    // because one will be the size equals to the original number of files * 2 +1 and the other will be equal to the number of files in the cleaned graph * 2 + 1
     ConstraintBuilder_GainOffset cstBuilder(map_relativeHistograms[0], vec_indexToFix);
     LP_Constraints_Sparse constraint;
     cstBuilder.Build(constraint);
